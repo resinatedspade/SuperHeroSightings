@@ -1,0 +1,39 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 21, 2019, 2:38:37 PM
+    Author     : RAC
+*/
+
+.bg-light {
+    background-color: black!important;
+    text-align: center;
+}
+.dropdown:hover>.dropdown-menu {
+    display: block;
+    background-color: #cccccc;
+}
+
+#navbarDropdown{
+    color: white;
+    background-color: black;
+}
+#homelink{
+    color: white;
+    background-color: black;
+}
+.nav-item{
+    border-right: solid;
+}
+#homeheader {
+    background-color: #cccccc;
+    border-style: solid;
+}
+
+body {
+    background-color: lightgray;
+    margin-top: 20px;
+}

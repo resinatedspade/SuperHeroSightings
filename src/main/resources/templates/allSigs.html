@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/CSS/css.css"/>
+        <script src="JS.js"></script>
+    </head>
+
+    <body>
+
+        <div  class="container">
+            <div id="homeheader" class="jumbotron">
+                <div class="row offset-1 col-10">
+                    <div class="col-8">
+                        <h1>Sightings From All Over</h1> 
+                        <p>Have you seen them today.</p> 
+                    </div>
+                    <div class="col-4" ><img src="/IMG/Header_Home_page.png" alt="HeaderImg">
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li  class="nav-item active">
+                            <a id="homelink" class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="index" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Heros/Villains
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allHeros">View All Heros/Villains</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addHero">Add Heros/Villains</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Powers
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allPowers">View All Powers</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addPower">Add Powers</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Organizations
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allOrgs">View All Organizations</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addOrg">Add Organizations</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Locations
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allLocs">View All Locations</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addLoc">Add Locations</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Sightings
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allSigs">View All Sightings</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addSig">Add Sightings</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="container">
+            <table class="table" >
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">DATE</th>
+                        <th scope="col">TIME</th>
+                        <th scope="col">LOCATION</th>
+                        <th scope="col">HEROS</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">DELETE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="sighting : ${sightings}">
+                        <th scope="row" th:text="${sighting.id}"></th>
+                        <td><form action="/dateprocess" method="POST"><button type="submit" th:text="${sighting.date}" name="date" th:value="${sighting.date}"></button></form></td>
+                        <td th:text="${sighting.time}"></td>
+                        <td>
+                            <div class="dropdown" >
+                                <button class="btn btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+                                    Location
+                                </button>
+                                <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton" >
+                                    <a class="dropdown-item" th:each='loc : ${sighting.loc}' href='#' >
+                                        <div th:text="${loc.name}"></div>
+                                        <div th:text="${loc.description}"></div>
+                                        <div th:text="${loc.address}"></div>
+                                        <div th:text="${loc.latitude}"></div>
+                                        <div th:text="${loc.longitude}"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                        <td> 
+                            <div class="dropdown" >
+                                <button class="btn btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+                                    Heros/Villains
+                                </button>
+                                <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton" >
+                                    <a class="dropdown-item" th:each="herovill : ${sighting.heroVill}" href='#' >
+                                        <div th:text="${herovill.name}"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <form action="/editSig" method="POST">
+                                <!-- Large modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" th:data-target="'.bd-example-modal-lg' + ${sighting.id}">Edit</button>
+
+                                <div th:class="'modal fade bd-example-modal-lg' + ${sighting.id}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="form-group">
+                                                <label for="date" class="col-form-label">Sighting's Date</label>
+                                                <input type="date" class="form-control" id="date" name="date" th:value="${sighting.date}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="time" class="col-form-label">Sighting's Time</label>
+                                                <input type='time' class="form-control" id="time" name='time' th:value="${sighting.time}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="locations">Choose Location</label>
+                                                <div style="height: 10em; width: 20em; overflow: auto; background-color: beige;" >
+                                                    <div th:each="loc : ${allLocations}">
+                                                        <input th:id="'location' + ${loc.id}" type="radio" name="location" th:value='${loc.id}' />
+                                                        <label for="location" th:text="'ID: ' + ${loc.id} + ' Name: ' + ${loc.name}"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="powers">Choose Heros</label>
+                                                <div style="height: 10em; width: 20em; overflow: auto; background-color: beige;" >
+                                                    <div th:each="hero : ${allHeros}">
+                                                        <input  th:id="'hero' + ${hero.id}" type="checkbox" th:name="hero" th:value="${hero.id}" />
+                                                        <label th:for="${hero.name}" th:text="'ID: ' + ${hero.id} + ' Name: ' + ${hero.name}"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" name="sigid" th:value="${sighting.id}" class="btn btn-primary">Edit Sighting</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/deleteSig" method="POST">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" th:data-target="'#exampleModalCenter' + ${sighting.id}">
+                                    Delete
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" th:id="'exampleModalCenter' + ${sighting.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Delete Sighting</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body" th:text="
+                                                 'Are you sure you want to delete id
+                                                 : ' + ${sighting.id} + ', date: ' +
+                                                 ${sighting.date} + ', location: ' 
+                                                 + ${sighting.loc.name} + '.'">
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" name="sigid" th:value="${sighting.id}" class="btn btn-primary">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

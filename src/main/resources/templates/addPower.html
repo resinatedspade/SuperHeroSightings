@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/CSS/css.css"/>
+        <script src="JS.js"></script>
+    </head>
+
+    <body>
+
+        <div  class="container">
+            <div id="homeheader" class="jumbotron">
+                <div class="row offset-1 col-10">
+                    <div class="col-8">
+                        <h1>Sightings From All Over</h1> 
+                        <p>Have you seen them today.</p> 
+                    </div>
+                    <div class="col-4" ><img src="/IMG/Header_Home_page.png" alt="HeaderImg">
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li  class="nav-item active">
+                            <a id="homelink" class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="index" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Heros/Villains
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allHeros">View All Heros/Villains</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addHero">Add Heros/Villains</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Powers
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allPowers">View All Powers</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addPower">Add Powers</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Organizations
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allOrgs">View All Organizations</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addOrg">Add Organizations</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Locations
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allLocs">View All Locations</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addLoc">Add Locations</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Sightings
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allSigs">View All Sightings</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addSig">Add Sightings</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="container">
+            <form action='/addingPower' method="POST">
+                <div class="form-group">
+                    <label for="name">Power Name</label>
+                    <input type="text" class="form-control" id="name" name='name' placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="description">Power Description</label>
+                    <input type="text" class="form-control" id="description" name="description" placeholder="Description">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

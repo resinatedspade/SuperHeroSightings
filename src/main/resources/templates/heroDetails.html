@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/CSS/css.css"/>
+        <script src="JS.js"></script>
+    </head>
+
+    <body>
+
+        <div  class="container">
+            <div id="homeheader" class="jumbotron">
+                <div class="row offset-1 col-10">
+                    <div class="col-8">
+                        <h1>Sightings From All Over</h1> 
+                        <p>Have you seen them today.</p> 
+                    </div>
+                    <div class="col-4" ><img src="/IMG/Header_Home_page.png" alt="HeaderImg">
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li  class="nav-item active">
+                            <a id="homelink" class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="index" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Heros/Villains
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allHeros">View All Heros/Villains</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addHero">Add Heros/Villains</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Powers
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allPowers">View All Powers</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addPower">Add Powers</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Organizations
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allOrgs">View All Organizations</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addOrg">Add Organizations</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Locations
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allLocs">View All Locations</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addLoc">Add Locations</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Sightings
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="allSigs">View All Sightings</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="addSig">Add Sightings</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="container">
+
+            <table class="table" >
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">NAME</th>
+                        <th scope="col">Sighted</th>
+                        <th scope="col">Organizations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" th:text="${herovill.id}"></th>
+                        <td th:text="${herovill.name}"></td>
+                        <td>
+                            <!-- Large modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg1">Locations</button>
+
+                            <div class='modal fade bd-example-modal-lg1' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Sightings</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <table class="table" >
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">ID</th>
+                                                            <th scope="col">NAME</th>
+                                                            <th scope="col">DESCRIPTION</th>
+                                                            <th scope="col">ADDRESS</th>
+                                                            <th scope="col">LONGITUDE</th>
+                                                            <th scope="col">LATITUDE</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr th:each="loc : ${locs}">
+                                                            <th scope="row" th:text="${loc.id}"></th>
+                                                            <td th:text="${loc.name}"></td> 
+                                                            <td th:text="${loc.description}"</td>
+                                                            <td th:text="${loc.address}"</td>
+                                                            <td th:text="${loc.latitude}"</td>
+                                                            <td th:text="${loc.longitude}"</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <!-- Large modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target='.bd-example-modal-lg'>Organizations</button>
+
+                            <div class='modal fade bd-example-modal-lg' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Organizations</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <table class="table" >
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">ID</th>
+                                                            <th scope="col">Name</th>
+                                                            <th scope="col">Description</th>
+                                                            <th scope="col">Contact</th>
+                                                            <th scope="col">Location</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr th:each="org : ${orgs}">
+                                                            <th scope="row" th:text="${org.id}"></th>
+                                                            <td th:text="${org.name}"></td> 
+                                                            <td th:text="${org.description}"</td>
+                                                            <td th:text="${org.contact}"</td>
+                                                            <td> 
+                                                                <div class="dropdown" >
+                                                                    <button class="btn btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+                                                                        Location
+                                                                    </button>
+                                                                    <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton" >
+                                                                        <a class="dropdown-item" th:each='loc : ${org.loc}' href='#' >
+                                                                            <div th:text="${loc.name}"></div>
+                                                                            <div th:text="${loc.description}"></div>
+                                                                            <div th:text="${loc.address}"></div>
+                                                                            <div th:text="${loc.latitude}"></div>
+                                                                            <div th:text="${loc.longitude}"></div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    </body>
+</html>
